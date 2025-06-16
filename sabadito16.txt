@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutoría 601 - Recursos Educativos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: #222;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      display: none;
+      padding: 60px 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .filters {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .filters button {
+      background-color: #ff6f61;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .filters button:hover {
+      background-color: #ff4b3e;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding-top: 20px;
+    }
+
+    .card {
+      background-color: #f8f8f8;
+      border-radius: 15px;
+      width: 280px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      color: #ff6f61;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .section-img {
+      display: block;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tutoría 601</h1>
+    <nav>
+      <a onclick="mostrarSeccion('inicio')">INICIO</a>
+      <a onclick="mostrarSeccion('clases')">CLASES EN LÍNEA</a>
+      <a onclick="mostrarSeccion('recursos')">RECURSOS</a>
+      <a onclick="mostrarSeccion('contacto')">CONTACTO</a>
+    </nav>
+  </header>
+
+  <!-- INICIO -->
+  <section id="inicio" class="active">
+    <h2>¿Quiénes somos?</h2>
+    <img src="https://cdn.pixabay.com/photo/2016/03/27/22/16/student-1282325_1280.jpg" class="section-img" alt="Estudiantes">
+    <p>Somos un equipo comprometido con el apoyo académico de nuestros estudiantes del grupo 601. A través de estas tutorías, buscamos brindar herramientas, materiales y orientación que les ayuden a fortalecer sus conocimientos en las diferentes materias.</p>
+    <p>Creemos en el poder de la educación colaborativa, y por eso hemos reunido materiales seleccionados por cada docente, organizados para que sea fácil acceder a ellos.</p>
+  </section>
+
+  <!-- CLASES EN LÍNEA -->
+  <section id="clases">
+    <h2>Clases en línea</h2>
+    <img src="https://cdn.pixabay.com/photo/2020/03/30/14/47/online-education-4985433_1280.jpg" class="section-img" alt="Clases en línea">
+    <p>Muy pronto podrás acceder aquí a clases virtuales y sesiones grabadas para reforzar los temas más importantes. ¡Mantente atento!</p>
+  </section>
+
+  <!-- RECURSOS EDUCATIVOS -->
+  <section id="recursos">
+    <h2>Recursos por Materia</h2>
+
+    <div class="filters">
+      <button onclick="filtrar('todos')">Todos</button>
+      <button onclick="filtrar('matematicas')">Matemáticas</button>
+      <button onclick="filtrar('comunicacion')">Comunicación</button>
+      <button onclick="filtrar('ciencia')">Ciencia</button>
+    </div>
+
+    <div class="cards" id="contenedorTarjetas">
+      <!-- Tarjeta 1 -->
+      <div class="card matematicas">
+        <img src="https://cdn.pixabay.com/photo/2017/02/01/22/02/maths-2038875_960_720.jpg" alt="Matemáticas">
+        <h3>Matemáticas</h3>
+        <p>Prof. Juan Pérez</p>
+        <a href="https://www.youtube.com/watch?v=video1" target="_blank">Ver video</a>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="card comunicacion">
+        <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/communication-593136_960_720.jpg" alt="Comunicación">
+        <h3>Comunicación</h3>
+        <p>Prof. Ana López</p>
+        <a href="https://www.youtube.com/watch?v=video2" target="_blank">Ver video</a>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="card ciencia">
+        <img src="https://cdn.pixabay.com/photo/2017/08/30/07/52/chemistry-2694234_960_720.jpg" alt="Ciencia">
+        <h3>Ciencia</h3>
+        <p>Prof. Mario Ramírez</p>
+        <a href="https://www.youtube.com/watch?v=video3" target="_blank">Ver video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/contact-us-593132_1280.jpg" class="section-img" alt="Contacto">
+    <p>¿Tienes dudas o sugerencias? Puedes hablar directamente con tu profesor o enviar un correo a:</p>
+    <p><strong>tutoria601@escuela.edu.mx</strong></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tutoría Escolar 601 - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    function mostrarSeccion(id) {
+      document.querySelectorAll('section').forEach(seccion => {
+        seccion.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    function filtrar(materia) {
+      const tarjetas = document.querySelectorAll('.card');
+      tarjetas.forEach(tarjeta => {
+        tarjeta.style.display = (materia === 'todos' || tarjeta.classList.contains(materia)) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
